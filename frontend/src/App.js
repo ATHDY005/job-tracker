@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 
-const API_URL =
-  process.env.REACT_APP_API_URL || 'https://localhost:5000/api/jobs';
+const API_URL = 'https://job-tracker-43r6.onrender.com/api/jobs';
+
 function App() {
   const [jobs, setJobs] = useState([]);
   const [showForm, setShowForm] = useState(false);
@@ -16,7 +16,6 @@ function App() {
     status: 'Applied',
   });
   const [errors, setErrors] = useState({});
-
   useEffect(() => {
     fetchJobs();
   }, []);
