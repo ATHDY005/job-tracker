@@ -7,7 +7,16 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      'https://gidyjobtracker.netlify.app',
+      'http://localhost:3000',
+      'https://gidyjobtracker.netlify.app', // Add your exact domain
+    ],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 // MongoDB Connection - SIMPLIFIED
@@ -47,6 +56,6 @@ app.get('/api/test-db', (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
